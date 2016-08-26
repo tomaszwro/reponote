@@ -52,28 +52,28 @@ Architecture
 Code organization
 =================
 
-The repo is a [monorepo](https://github.com/babel/babel/blob/master/doc/design/monorepo.md) managed with [lerna](https://github.com/lerna/lerna). For the actual code see packages folder.
+The repo is a [monorepo](https://github.com/babel/babel/blob/master/doc/design/monorepo.md) managed with [lerna](https://github.com/lerna/lerna). For the actual code see [packages](packages/) folder.
 
 **Package descriptions**:
 
-* `cmd-adapter-git-cli` - command line git api adapter
-* `cmd-adapter-hg-cli` - same as above, for mercurial
-* `reponote-api` - api server exposing reponote to the web
-* `reponote-core` - reponote domain (git & mercurial handling goes both here, because they're not intended to replace one another - should be both supported)
-* `simple-command-queue` - make commands patiently wait for each other
-* `simple-command-bus` - let command and service objects meet
-* `simple-dispatcher` - put stuff on the right queue 
-* `test-server-git` - spin up a local git repo server for intergration tests 
-* `test-server-hg` - same as above for mercurial
+* [cmd-adapter-git-cli](packages/cmd-adapter-git-cli/) - command line git api adapter
+* [cmd-adapter-hg-cli](packages/cmd-adapter-hg-cli/) - same as above, for mercurial
+* [reponote-api](packages/reponote-api/) - api server exposing reponote to the web
+* [reponote-core](packages/reponote-core/) - reponote domain (git & mercurial handling goes both here, because they're not intended to replace one another - should be both supported)
+* [simple-command-queue](packages/simple-command-queue/) - make commands patiently wait for each other
+* [simple-command-bus](packages/simple-command-bus/) - let command and service objects meet
+* [simple-dispatcher](packages/simple-dispatcher/) - put stuff on the right queue 
+* [test-server-git](packages/test-server-git/) - spin up a local git repo server for intergration tests 
+* [test-server-hg](packages/test-server-hg/) - same as above for mercurial
 
 **To come**:
 
-* `cmd-adapter-git-lib` - adapt native libgit bindings via [nodegit](https://github.com/nodegit/nodegit); possible replacement for cmd-adapter-git-cli 
-* `cmd-adapter-hg-cmd-server` - adapt [mercurial command server](https://www.mercurial-scm.org/wiki/CommandServer), possibly via [this package](https://www.npmjs.com/package/hg), possible replacement for cmd-adapter-hg-cli
-* `reponote-cli` - provide some reponote functionality on your commandline, without the mediation by reponote-api  
-* `reponote-client-web` - awesome lean web client, currently residing in my mind
-* `reponote-client-mobile` - try [React Native](https://facebook.github.io/react-native/)...
-* `reponote-client-core` - ...while extracting as much logic as possible here
+* cmd-adapter-git-lib - adapt native libgit bindings via [nodegit](https://github.com/nodegit/nodegit); possible replacement for cmd-adapter-git-cli 
+* cmd-adapter-hg-cmd-server - adapt [mercurial command server](https://www.mercurial-scm.org/wiki/CommandServer), possibly via [this package](https://www.npmjs.com/package/hg), possible replacement for cmd-adapter-hg-cli
+* reponote-cli - provide some reponote functionality on your commandline, without the mediation by reponote-api  
+* reponote-client-web - awesome lean web client, currently residing in my mind
+* reponote-client-mobile - try [React Native](https://facebook.github.io/react-native/)...
+* reponote-client-core - ...while extracting as much logic as possible here
 
 
 Setup & test
@@ -100,8 +100,8 @@ Coding style
 
 The coding style is somewhat heterodox, but hopefully consistent:
 
-* no semicolons; it's nothing new, [eg. npm does it](https://github.com/npm/npm/tree/master/lib); just put a semicolon at the beginning of the line when expression begins with a paren|bracket|operand|backtick, [see here](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding)
-* wrap paren content with spaces, same with curly, except square brackets; again, it's nothing new, [jquery does it too](https://github.com/jquery/jquery/tree/master/src)
+* no semicolons; it's nothing new, eg. [npm does it](https://github.com/npm/npm/tree/master/lib); just put a semicolon at the beginning of the line when expression begins with a paren|bracket|operand|backtick, [see here](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding)
+* wrap parens content with spaces, same with curly, except square brackets; again, it's nothing new, [jquery does it too](https://github.com/jquery/jquery/tree/master/src)
 * use ES2015 on server side, no transpilation required
 * use ES2017's life-changing [async/await](https://medium.com/@tmvvr/ecmascript-async-await-to-the-rescue-fc379ff89146#.yre9hvnyq) achievable via [async-to-gen](https://github.com/leebyron/async-to-gen)
 * double quotes by default
