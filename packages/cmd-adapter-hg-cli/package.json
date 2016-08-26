@@ -1,0 +1,19 @@
+{
+  "name": "cmd-adapter-hg-cli",
+  "version": "0.0.1",
+  "description": "hg command line adapter for reponote",
+  "main": "HgCommandLineAdapter.js",
+  "scripts": {
+    "test": "echo TODO tests"
+  },
+  "dependencies": {
+    "mz": "^2.4.0",
+    "debug": "~2.2.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  },
+  "author": "Tomasz Wróbel",
+  "license": "ISC"
+}

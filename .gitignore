@@ -1,0 +1,7 @@
+data/
+ignored-dir/
+node_modules
+npm-debug.log.*
+*.log
+*.sublime-project
+*.sublime-workspace

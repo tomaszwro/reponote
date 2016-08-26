@@ -1,0 +1,28 @@
+{
+  "name": "reponote-core",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "symlink_local_dirs": "cd node_modules && ( test -L app || ln -s ../app ) && ( test -L test || ln -s ../test )",
+    "test": "NODE_ENV=test DEBUG=app:* mocha --require async-to-gen/register --recursive --bail --slow 3000 --reporter spec test/integration"
+  },
+  "dependencies": {
+    "cmd-adapter-git-cli": "*",
+    "cmd-adapter-hg-cli": "*",
+    "test-server-git": "*",
+    "test-server-hg": "*",
+    "async-to-gen": "^1.0.5",
+    "debug": "^2.2.0",
+    "hg": "^0.2.0",
+    "mkdirp": "^0.5.1",
+    "mz": "^2.4.0",
+    "nodegit": "^0.14.1",
+    "promisify-node": "^0.4.0",
+    "validate.js": "^0.10.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3",
+    "supertest": "^1.2.0"
+  }
+}

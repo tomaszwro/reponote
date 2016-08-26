@@ -1,0 +1,19 @@
+{
+  "name": "test-server-hg",
+  "version": "0.0.1",
+  "description": "simple hg server serving a simple repo via http for usage in dev/test",
+  "main": "TestServerHg.js",
+  "scripts": {
+    "test": "echo 'TODO: test the test server :)' # mocha --require async-to-gen/register --recursive --reporter spec test/"
+  },
+  "dependencies": {
+    "async-to-gen": "^1.0.5",
+    "debug": "~2.2.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  },
+  "author": "Tomasz Wróbel",
+  "license": "ISC"
+}
