@@ -37,7 +37,7 @@ Some important design decisions
 
 **Ephemeral local repos on the server**. Deleting local repos on the reponote server at any given time shouldn't break anything as a consequence of some of the above points - if it's deleted, it will simply clone again (of course deleting cannot happen when a request is being processed or push didn't finish). This way you can easily get rid of repos that weren't accessed for some time & save space.
 
-**Prefer simple over smart**, at least when the latter is not smart enough. Example: handling conflicts. There's no plan to support multi user collaboration in first versions, so this shouldn't happen a lot. When a conflict appears, just perform the merge, conflict the default merge-tool output & let the user cleanup on client side. This app is not for codebases, so it shouldn't be a problem.
+**Prefer simple over smart**, at least when the latter is not smart enough. Example: handling conflicts. There's no plan to support multi user collaboration in first versions, so this shouldn't happen a lot. When a conflict appears, just perform the merge, commit the default merge-tool output & let the user cleanup on client side. This app is not for codebases, so it shouldn't be a problem.
 
 Architecture
 ============
