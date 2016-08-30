@@ -4,6 +4,7 @@ const fs      = require( "fs" )
 const mkdirp  = require( "mkdirp" )
 
 const TEST_SERVER_DIR_NAME = "TestServerGit"
+const PID_FILE_NAME = "TestServerGit.pid"
 const BINARY = "git"
 
 // TODO: extract stuff common with TestServerHg
@@ -19,6 +20,7 @@ class TestServerGit {
     this.TEST_DATA = TEST_DATA
     this.testServerDirPath = path.join( TEST_DATA.testTempDir, TEST_SERVER_DIR_NAME )
     this.repoPath = path.join( this.testServerDirPath, TEST_DATA.repoName )
+    this.pidFilePath = path.join( this.testServerDirPath, PID_FILE_NAME )
   }
 
   createSync() {
@@ -37,8 +39,10 @@ class TestServerGit {
   // 
 
   startServer() {
-    this.serverProcess = cp.spawn( BINARY, [
+    cp.execFileSync( BINARY, [
       "daemon",
+      "--detach",
+      "--pid-file=" + this.pidFilePath,
       "--reuseaddr",
       "--export-all",
       "--enable=receive-pack",
@@ -49,7 +53,7 @@ class TestServerGit {
   }
 
   stopServer() {
-    this.serverProcess.kill()
+    process.kill( this.readPidSync(), "SIGINT" )
   }
 
   populateRepoDirContent() {
@@ -78,6 +82,10 @@ class TestServerGit {
     // TODO: unsafe! how to improve? Delete all created files one by one and
     // eventually rmdir?
     cp.execFileSync( "rm", ["-r", this.testServerDirPath] )
+  }
+
+  readPidSync() {
+    return fs.readFileSync( this.pidFilePath ).toString( "utf8" ).trim()
   }
 
 }

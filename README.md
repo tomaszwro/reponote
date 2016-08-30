@@ -92,8 +92,6 @@ $ npm install
 $ npm run bootstrap
 $ npm test
 ```
-Caveat: you may experience a random failure in the integration tests from time to time (in my case rarily enough). That's because the git/hg test server doesn't daemonize by itself and I don't know how detect when it's already listening. TODO: use eg. --daemon option for hg serve (or --detach for git), wait for exit & manage the pidfile, that will definitely help.
-
 
 Coding style
 ============

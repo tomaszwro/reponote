@@ -39,31 +39,19 @@ class TestServerHg {
   // 
 
   startServer() {
-    this.serverProcess = cp.spawn( BINARY, [
+    cp.execFileSync( BINARY, [
       "serve",
+      "--daemon",
+      "--pid-file", this.pidFilePath,
       "--repository", this.repoPath,
       "--port", this.TEST_DATA.remoteServer.hg.port,
       "--config", "web.push_ssl=No",
       "--config", "web.allow_push=*",
     ] )
-
-    // TODO: sometimes there are random test failures, b/c, I suppose, the
-    // remote server is not listening at the moment the tests issue requests.
-    // I thought this could be fixed by waiting for the "Listening" text from
-    // servers stdout, but, this data seems to always be missed (like reading
-    // from the stream happens too late, weird)
-
-    // this.serverProcess.stderr.on( "data", (chunk) => {
-    //   debug( "data arrived", chunk.toString( "utf8" ) )
-    // } )
-
-    // Another idea would be to let hg serve daemonize itself and use
-    // execFileSync, then you know it's ready after the call is finished. And
-    // track the pid.
   }
 
   stopServer() {
-    this.serverProcess.kill()
+    process.kill( this.readPidSync(), "SIGINT" )
   }
 
   populateRepoDirContent() {
@@ -89,6 +77,10 @@ class TestServerHg {
   removeDirs() {
     // TODO: unsafe! how to improve? Delete all files one by one and eventually rmdir?
     cp.execFileSync( "rm", ["-r", this.testServerDirPath] )
+  }
+
+  readPidSync() {
+    return fs.readFileSync( this.pidFilePath ).toString( "utf8" ).trim()
   }
 
 }
