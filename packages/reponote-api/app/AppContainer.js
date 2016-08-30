@@ -1,6 +1,6 @@
-const initExpressApp               = require( "app/init/initExpressApp" )
-const initGlobalCommandDispatcher  = require( "app/init/initGlobalCommandDispatcher" )
-const initWorkingDirManager        = require( "app/init/initWorkingDirManager" )
+const initExpressApp              = require( "app/init/initExpressApp" )
+const initGlobalCommandDispatcher = require( "app/init/initGlobalCommandDispatcher" )
+const initWorkingDirManager       = require( "app/init/initWorkingDirManager" )
 
 //
 // Manages global state and long living objects, falicitates (some) dependency

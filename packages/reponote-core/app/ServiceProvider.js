@@ -1,5 +1,5 @@
 COMMAND_SERVICE_MAP = {
-  SaveNoteCommand:    require( "app/services/SaveNoteService" ),
+  SaveNoteCommand:      require( "app/services/SaveNoteService" ),
   FetchNoteCommand:     require( "app/services/FetchNoteService" ),
   FetchNoteListCommand: require( "app/services/FetchNoteListService" ),
 }

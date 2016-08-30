@@ -1,6 +1,6 @@
-const SimpleDispatcher = require( "simple-dispatcher" )
+const SimpleDispatcher   = require( "simple-dispatcher" )
 const SimpleCommandQueue = require( "simple-command-queue" )
-const SimpleCommandBus = require( "simple-command-bus" )
+const SimpleCommandBus   = require( "simple-command-bus" )
 
 //
 // Creates global command dispatcher, that puts the command to the right

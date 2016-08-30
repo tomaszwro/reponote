@@ -1,5 +1,5 @@
 const { expect }              = require( "chai" )
-const SimpleCommandQueue        = require( "../SimpleCommandQueue" )
+const SimpleCommandQueue      = require( "../SimpleCommandQueue" )
 const { SampleCommand,        
         SampleService,        
         COMMAND_SERVICE_MAP } = require( "./dummies" )
