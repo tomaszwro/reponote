@@ -38,7 +38,10 @@ class RepoHandlerHg extends RepoHandlerBase {
   }
 
   commit( filePath ) {
-    return this.command( "commit", "--message", this.commitMessageFor( filePath ) )
+    return this.command( "commit",
+      "--message", this.commitMessageFor( filePath ),
+      "--user", "reponote"
+    )
   }
 
   mergeHeads() {

@@ -68,7 +68,7 @@ class TestServerHg {
   initRepo() {
     cp.execFileSync( BINARY, ["init"], { cwd: this.repoPath } )
     cp.execFileSync( BINARY, ["add"], { cwd: this.repoPath } )
-    cp.execFileSync( BINARY, ["ci", "-m", "'initial commit'"], { cwd: this.repoPath } )
+    cp.execFileSync( BINARY, ["ci", "--message", "'initial commit'", "--user", "reponote"], { cwd: this.repoPath } )
     let currentRev = cp.execFileSync( BINARY, ["parent", "--template", "{node}"], { cwd: this.repoPath } ).toString( "utf8" )
     // TODO XXX: please forgive me, will clean up soon
     this.TEST_DATA.repoTip = currentRev

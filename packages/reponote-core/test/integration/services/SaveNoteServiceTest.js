@@ -65,6 +65,7 @@ async function testMergeWithConflicts( serviceClass, command ) {
     newContent:   TEST_DATA.newContentA,
   } )
   let resultA = await serviceA.call( commandA )
+
   expectContent( resultA, TEST_DATA.newContentA )
 
   let serviceB = serviceFactory( serviceClass )
