@@ -45,7 +45,7 @@ class RepoHandlerHg extends RepoHandlerBase {
   }
 
   mergeHeads() {
-    return this.command( "merge", "--tool", "hgmerge" )
+    return this.command( "merge", "--tool", ":merge" )
   }
 
   resolve() {
@@ -61,13 +61,13 @@ class RepoHandlerHg extends RepoHandlerBase {
   }
 
   normalizeConflicts( content ) {
-    return content.replace( this.mergeRegex, (_, local, __, other) => {
+    return content.replace( this.mergeRegex, (_, local, other) => {
       return this.normalizedChunk( local, other )
     } )
   }
 
   get mergeRegex() {
-    return /<<<<<<< local\n([\s\S]*)\|\|\|\|\|\|\| base\n([\s\S]*)=======\n([\s\S]*)>>>>>>> other\n/g
+    return /<<<<<<< local\n([\s\S]*)=======\n([\s\S]*)>>>>>>> other\n/g
   }
 
   async converge( filePath ) {
