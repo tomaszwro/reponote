@@ -24,6 +24,7 @@ class RepoController extends BaseController {
       
       let command = new FetchNoteListCommand( {
         repoAuthData: this.extractRepoAuthData(),
+        repoType:     this.extractParam( "repoType" ),
       } )
 
       return this.processCommand( command )
@@ -36,6 +37,7 @@ class RepoController extends BaseController {
 
       let command = new FetchNoteCommand( {
         repoAuthData: this.extractRepoAuthData(),
+        repoType:     this.extractParam( "repoType" ),
         filePath:     this.extractFilePath(),
       } )
 
@@ -49,6 +51,7 @@ class RepoController extends BaseController {
 
       let command = new SaveNoteCommand( {
         repoAuthData: this.extractRepoAuthData(),
+        repoType:     this.extractParam( "repoType" ),
         filePath:     this.extractFilePath(),
         baseRevision: this.extractPayload( "baseRevision" ),
         newContent:   this.extractPayload( "newContent" ),

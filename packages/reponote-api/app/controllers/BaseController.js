@@ -16,6 +16,10 @@ class BaseController {
     return this.request.body[key]
   }
 
+  extractParam( key ) {
+    return this.request.query[key]
+  }
+
   async respond( block ) {
     try {
       let result = await block()
@@ -26,6 +30,7 @@ class BaseController {
         // TODO: 422 only for validation errors
         this.respondWithError( 422, error )
       } else {
+        console.error( "ERROR", error )
         this.respondWithError( 500, error )
       }
     }

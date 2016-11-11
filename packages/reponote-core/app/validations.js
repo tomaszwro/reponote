@@ -7,4 +7,5 @@ module.exports = {
   // TODO: too agressive
   filePath:     { presence: true, format: { pattern: /^([\w ]+\/)*[\w ]+$/, message: "invalid" } },
   baseRevision: { presence: true, format: { pattern: /^[0-9a-f]+$/,         message: "invalid" } }, 
+  repoType:     { presence: true, format: { pattern: /^(git|hg)$/,          message: "invalid" } }, 
 }

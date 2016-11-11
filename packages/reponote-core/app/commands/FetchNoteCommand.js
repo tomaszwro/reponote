@@ -7,6 +7,7 @@ class FetchNoteCommand extends BaseCommand {
 
   static get attributes() { return {
     repoAuthData: validations.repoAuthData,
+    repoType:     validations.repoType,
     filePath:     validations.filePath, 
   } }
 

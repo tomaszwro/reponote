@@ -9,7 +9,8 @@ describe( "RepoController", () => {
 
   function prepareApiRequest( method, path ) {
     return request( context.appContainer.expressApp )[method]( path )
-      .query( TEST_DATA.remoteServer.hg.authData )
+      // TODO: merge repoType to authData?
+      .query( Object.assign( {}, TEST_DATA.remoteServer.hg.authData, { repoType: "hg" } ) )
       .set( "Accept", "application/json" )
       .set( "Content-Type", "application/json" ) // TODO: post only
       .expect( 200 )
